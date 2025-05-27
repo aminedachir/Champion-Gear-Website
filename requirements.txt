@@ -1,0 +1,4 @@
+Flask==2.3.2
+Werkzeug==2.3.7
+sqlite3==2.6.0  # Usually comes with Python
+python-dotenv==1.0.0  # Recommended for environment variables
