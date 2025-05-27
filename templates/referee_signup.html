@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}تسجيل حكم جديد - Champion Gear{% endblock %}
+
+{% block content %}
+<div style="margin-top: 6rem; margin-bottom: 4rem;">
+    <div class="page-container">
+        <div class="form-container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="font-size: 4rem; color: #ff6b35; margin-bottom: 1rem;">👨‍⚖️</div>
+                <h1 style="color: #ff6b35; margin-bottom: 0.5rem;">تسجيل <br> حكم - مدرب - رياضي <br> جديد</h1>
+                <p style="color: #ccc;">أنشئ حسابك في نظامنا</p>
+            </div>
+
+            <form method="POST" action="{{ url_for('referee_signup_post') }}">
+                <div class="form-group">
+                    <label for="user_type">نوع المستخدم</label>
+                    <select id="user_type" name="user_type" required onchange="updateRoleOptions()">
+                        <option value="">-- اختر النوع --</option>
+                        <option value="referee">حكم</option>
+                        <option value="trainer">مدرب</option>
+                        <option value="athlete">رياضي</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="full_name">الاسم الكامل</label>
+                    <input type="text" id="full_name" name="full_name" required placeholder="أدخل الاسم الكامل">
+                </div>
+
+                <div class="form-group">
+                    <label for="club_name">اسم النادي</label>
+                    <input type="text" id="club_name" name="club_name" required placeholder="أدخل اسم النادي">
+                </div>
+
+                <div class="form-group">
+                    <label for="wilaya">الولاية</label>
+                    <select id="wilaya" name="wilaya" required>
+                        <option value="">-- اختر الولاية --</option>
+                        <option value="01 - أدرار">01 - أدرار</option>
+                        <option value="02 - الشلف">02 - الشلف</option>
+                        <option value="03 - الأغواط">03 - الأغواط</option>
+                        <option value="04 - أم البواقي">04 - أم البواقي</option>
+                        <option value="05 - باتنة">05 - باتنة</option>
+                        <option value="06 - بجاية">06 - بجاية</option>
+                        <option value="07 - بسكرة">07 - بسكرة</option>
+                        <option value="08 - بشار">08 - بشار</option>
+                        <option value="09 - البليدة">09 - البليدة</option>
+                        <option value="10 - البويرة">10 - البويرة</option>
+                        <option value="11 - تمنراست">11 - تمنراست</option>
+                        <option value="12 - تبسة">12 - تبسة</option>
+                        <option value="13 - تلمسان">13 - تلمسان</option>
+                        <option value="14 - تيارت">14 - تيارت</option>
+                        <option value="15 - تيزي وزو">15 - تيزي وزو</option>
+                        <option value="16 - الجزائر">16 - الجزائر</option>
+                        <option value="17 - الجلفة">17 - الجلفة</option>
+                        <option value="18 - جيجل">18 - جيجل</option>
+                        <option value="19 - سطيف">19 - سطيف</option>
+                        <option value="20 - سعيدة">20 - سعيدة</option>
+                        <option value="21 - سكيكدة">21 - سكيكدة</option>
+                        <option value="22 - سيدي بلعباس">22 - سيدي بلعباس</option>
+                        <option value="23 - عنابة">23 - عنابة</option>
+                        <option value="24 - قالمة">24 - قالمة</option>
+                        <option value="25 - قسنطينة">25 - قسنطينة</option>
+                        <option value="26 - المدية">26 - المدية</option>
+                        <option value="27 - مستغانم">27 - مستغانم</option>
+                        <option value="28 - المسيلة">28 - المسيلة</option>
+                        <option value="29 - معسكر">29 - معسكر</option>
+                        <option value="30 - ورقلة">30 - ورقلة</option>
+                        <option value="31 - وهران">31 - وهران</option>
+                        <option value="32 - البيض">32 - البيض</option>
+                        <option value="33 - إليزي">33 - إليزي</option>
+                        <option value="34 - برج بوعريريج">34 - برج بوعريريج</option>
+                        <option value="35 - بومرداس">35 - بومرداس</option>
+                        <option value="36 - الطارف">36 - الطارف</option>
+                        <option value="37 - تندوف">37 - تندوف</option>
+                        <option value="38 - تسمسيلت">38 - تسمسيلت</option>
+                        <option value="39 - الوادي">39 - الوادي</option>
+                        <option value="40 - خنشلة">40 - خنشلة</option>
+                        <option value="41 - سوق أهراس">41 - سوق أهراس</option>
+                        <option value="42 - تيبازة">42 - تيبازة</option>
+                        <option value="43 - ميلة">43 - ميلة</option>
+                        <option value="44 - عين الدفلى">44 - عين الدفلى</option>
+                        <option value="45 - النعامة">45 - النعامة</option>
+                        <option value="46 - عين تيموشنت">46 - عين تيموشنت</option>
+                        <option value="47 - غرداية">47 - غرداية</option>
+                        <option value="48 - غليزان">48 - غليزان</option>
+                        <option value="49 - تميمون">49 - تميمون</option>
+                        <option value="50 - برج باجي مختار">50 - برج باجي مختار</option>
+                        <option value="51 - أولاد جلال">51 - أولاد جلال</option>
+                        <option value="52 - بني عباس">52 - بني عباس</option>
+                        <option value="53 - إن صالح">53 - إن صالح</option>
+                        <option value="54 - إن قزام">54 - إن قزام</option>
+                        <option value="55 - توقرت">55 - توقرت</option>
+                        <option value="56 - جانت">56 - جانت</option>
+                        <option value="57 - المغير">57 - المغير</option>
+                        <option value="58 - المنيعة">58 - المنيعة</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="role-group" style="display: none;">
+                    <label for="role_option">الرتبة / التصنيف</label>
+                    <select id="role_option" name="role_option" required>
+                        <option value="">-- اختر الرتبة --</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" name="username" required placeholder="أدخل اسم المستخدم">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" name="email" required placeholder="أدخل البريد الإلكتروني">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" name="password" required placeholder="أدخل كلمة المرور">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">تأكيد كلمة المرور</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required placeholder="أعد إدخال كلمة المرور">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">إنشاء الحساب</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: #ccc; margin-bottom: 1rem;">لديك حساب بالفعل؟</p>
+                <a href="{{ url_for('referee_login') }}" class="btn btn-secondary">تسجيل الدخول</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function updateRoleOptions() {
+    const userType = document.getElementById('user_type').value;
+    const roleGroup = document.getElementById('role-group');
+    const roleSelect = document.getElementById('role_option');
+
+    roleSelect.innerHTML = ''; 
+    roleGroup.style.display = userType ? 'block' : 'none';
+
+    let options = [];
+
+    if (userType === 'referee') {
+        options = ["متربض", "حكم ولائي", "حكم جهوي", "حكم و طني", "حكم افريقي", "حكم عالمي"];
+    } else if (userType === 'trainer') {
+        options = ["ممرن رياضي", "مربي رياضي درجة 1", "مربي رياضي درجة 2", "مربي رياضي درجة 3"];
+    } else if (userType === 'athlete') {
+        options = ["اشبال", "اواسط", "امال", "اكابر"];
+    }
+
+    options.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt;
+        option.textContent = opt;
+        roleSelect.appendChild(option);
+    });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Karate Dojo{% endblock %}</title>
+    <style>
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 40px; 
+            width: auto;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: white;
+            line-height: 1.6;
+            background-image: url("{{ url_for('static', filename='backround.png') }}");
+            background-position: top;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6b35;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ff6b35;
+            border: 2px solid #ff6b35;
+        }
+
+        .btn-secondary:hover {
+            background: #ff6b35;
+            color: white;
+        }
+
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        #pp {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero h1 .highlight {
+            color: #ff6b35;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .karate-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15rem;
+            color: rgba(255, 107, 53, 0.1);
+            z-index: 1;
+            font-weight: bold;
+        }
+
+        .stats {
+            background: rgba(255, 107, 53, 0.1);
+            padding: 3rem 0;
+            margin-top: -5rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b35;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .flash-messages {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .flash-message {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .flash-message.error {
+            background: #dc3545;
+        }
+
+        .flash-message.success {
+            background: #28a745;
+        }
+
+        .flash-message.info {
+            background: #17a2b8;
+        }
+
+        .footer {
+            background: #111;
+            padding: 3rem 0 1rem;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer p {
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .karate-symbol {
+                font-size: 8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #ff6b35;
+            margin-bottom: 3rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #ff6b35;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        } 
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .card h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .card-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-top: 1rem;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ff6b35;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-full {
+            width: 100%;
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            right: 0;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 107, 53, 0.2);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .card p{
+            text-align: center;
+        }
+        select, option {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        select:focus, option:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+            color: white;
+        }
+
+        select option {
+            background-color: #1a1a1a; 
+            color: white;              
+        }
+        #loginModal .form-container {
+            animation: modalFadeIn 0.3s ease;
+        }
+        .btnalign {
+            text-align: center;
+        }
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <span>Champion Gear</span>
+                <img src="{{ url_for('static', filename='images/logii.jpg') }}" alt="Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('shop') }}">Shop</a></li>
+                <li><a href="{{ url_for('cart') }}">Cart</a></li>
+                <li><a href="{{ url_for('workshops') }}">Workshops</a></li>
+            </ul>
+            <div class="nav-buttons">
+                {% if session.get('user_id') %}
+                    <span style="color: #ff6b35;">مرحبا، {{ session.get('username') }}</span>
+                    <a href="{{ url_for('logout') }}" class="btn btn-secondary">تسجيل الخروج</a>
+                {% else %}
+                    <div class="dropdown">
+                        <a href="#" class="btn btn-secondary">تسجيل الدخول ▼</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('referee_login') }}">حكم</a>
+                            <a href="{{ url_for('organization_login') }}">رابطة / نادي </a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="btn btn-primary">إنشاء حساب ▼</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('referee_signup') }}">حكم</a>
+                            <a href="{{ url_for('organization_signup') }}">رابطة / نادي </a>
+                        </div>
+                    </div>
+                    <button id="cart-toggle" onclick="toggleCartPreview()" style="background: #ff6b35; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative;">
+    🛒 <span id="cart-count" style="position: absolute; top: -5px; right: -5px; background: white; color: #ff6b35; border-radius: 50%; width: 20px; height: 20px; font-size: 0.8rem; display: none; align-items: center; justify-content: center;">0</span>
+</button>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+<div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;">
+    <div class="form-container" style="max-width: 500px; margin: 2rem;">
+        <h2 style="color: #ff6b35; text-align: center; margin-bottom: 2rem;">Login Required</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #ccc;">
+            You need to be logged in to add items to your cart. Please login or create an account.
+        </p>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <a href="{{ url_for('referee_login') }}" class="btn btn-primary" style="text-align: center;">
+                Login as Referee
+            </a>
+            <a href="{{ url_for('organization_login') }}" class="btn btn-primary" style="text-align: center;">
+                Login as Organization
+            </a>
+            <div style="text-align: center; margin-top: 1rem;">
+                <p style="color: #ccc;">Don't have an account?</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a href="{{ url_for('referee_signup') }}" class="btn btn-secondary">Sign Up as Referee</a>
+                    <a href="{{ url_for('organization_signup') }}" class="btn btn-secondary">Sign Up as Organization</a>
+                </div>
+            </div>
+        </div>
+        
+        <button onclick="closeLoginModal()" class="btn btn-secondary" style="width: 100%; margin-top: 2rem;">
+            Continue Shopping
+        </button>
+    </div>
+</div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; Developed By Dachir Amine</p>
+            <p>Full Stack Web Developer</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', JSON.stringify({}));
+        }
+        updateCartDisplay();
+    });
+        setTimeout(function() {
+            const flashMessages = document.querySelectorAll('.flash-message');
+            flashMessages.forEach(function(msg) {
+                msg.style.opacity = '0';
+                msg.style.transform = 'translateX(100%)';
+                setTimeout(() => msg.remove(), 300);
+            });
+        }, 4000);
+        function updateCartCount() {
+        fetch('/get_cart_count')
+            .then(response => response.json())
+            .then(data => {
+                const cartCount = document.getElementById('cart-count');
+                cartCount.textContent = data.count;
+                cartCount.style.display = data.count > 0 ? 'block' : 'none';
+            });
+    }
+
+    function addToCart(productId, name, price) {
+    fetch('/add_to_cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ product_id: productId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            updateCartCount();
+            showNotification('Item added to cart!');
+        } else if (data.login_required) {
+            showLoginRequired();
+        }
+    });
+}
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+     function updateCartDisplay() {
+        fetch('/get_cart')
+            .then(response => response.json())
+            .then(data => {
+                const cartCount = document.getElementById('cart-count');
+                if (data.count > 0) {
+                    cartCount.textContent = data.count;
+                    cartCount.style.display = 'flex';
+                } else {
+                    cartCount.style.display = 'none';
+                }
+                
+                if (document.getElementById('cart-preview') && document.getElementById('cart-preview').style.display === 'block') {
+                    updateCartPreview(data);
+                }
+            });
+    }
+function showLoginRequired() {
+    document.getElementById('loginModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.getElementById('loginModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeLoginModal();
+    }
+});
+
+    function updateCartPreview(cartData) {
+        const itemsContainer = document.getElementById('cart-preview-items');
+        const totalContainer = document.getElementById('cart-preview-total');
+        
+        itemsContainer.innerHTML = '';
+        
+        if (cartData.cart_items.length === 0) {
+            itemsContainer.innerHTML = '<p style="text-align: center; color: #ccc;">Your cart is empty</p>';
+            totalContainer.textContent = '';
+            return;
+        }
+        
+        cartData.cart_items.forEach(item => {
+            const itemEl = document.createElement('div');
+            itemEl.className = 'cart-preview-item';
+            itemEl.style.cssText = 'display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #333;';
+            itemEl.innerHTML = `
+                <img src="/static/images/${item.image}" alt="${item.name}" width="50" style="border-radius: 4px;">
+                <div style="flex-grow: 1;">
+                    <h4 style="margin: 0; color: #ff6b35; font-size: 1rem;">${item.name}</h4>
+                    <p style="margin: 0.3rem 0 0; color: #ccc; font-size: 0.9rem;">$${item.price.toFixed(2)} × ${item.quantity}</p>
+                </div>
+                <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: #ff6b35; font-size: 1.5rem; cursor: pointer; padding: 0 0.5rem;">×</button>
+            `;
+            itemsContainer.appendChild(itemEl);
+        });
+        
+        totalContainer.innerHTML = `
+            <div style="font-weight: bold; color: #ff6b35; text-align: right; padding: 1rem 0; font-size: 1.2rem; margin-top: 1rem; border-top: 1px solid #333;">
+                Total: $${cartData.total.toFixed(2)}
+            </div>
+        `;
+    }
+
+    function toggleCartPreview() {
+        const preview = document.getElementById('cart-preview');
+        if (preview.style.display === 'block') {
+            preview.style.display = 'none';
+        } else {
+            fetch('/get_cart')
+                .then(response => response.json())
+                .then(data => {
+                    updateCartPreview(data);
+                    preview.style.display = 'block';
+                });
+        }
+    }
+
+    function removeFromCart(productId) {
+        fetch('/remove_from_cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateCartDisplay();
+                if (document.getElementById('cart-preview').style.display === 'block') {
+                    fetch('/get_cart')
+                        .then(response => response.json())
+                        .then(updatedData => {
+                            updateCartPreview(updatedData);
+                        });
+                }
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCartDisplay();
+    });
+
+    document.addEventListener('click', function(event) {
+        const cartPreview = document.getElementById('cart-preview');
+        const cartToggle = document.getElementById('cart-toggle');
+        
+        if (cartPreview && cartPreview.style.display === 'block' && 
+            !cartPreview.contains(event.target) && 
+            !cartToggle.contains(event.target)) {
+            cartPreview.style.display = 'none';
+        }
+    });
+    </script>
+    <div id="cart-preview" style="display: none; position: fixed; top: 80px; right: 20px; width: 350px; background: rgba(0,0,0,0.95); border: 1px solid #ff6b35; border-radius: 8px; padding: 1rem; z-index: 1000; max-height: 70vh; overflow-y: auto;">
+    <h3 style="color: #ff6b35; margin-bottom: 1rem;">Your Cart</h3>
+    <div id="cart-preview-items"></div>
+    <div id="cart-preview-total"></div>
+    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <a href="{{ url_for('cart') }}" class="btn btn-primary" style="flex: 1;">View Cart</a>
+        <a href="{{ url_for('checkout') }}" class="btn btn-secondary" style="flex: 1;">Checkout</a>
+    </div>
+</div>
+</body>
+</html>

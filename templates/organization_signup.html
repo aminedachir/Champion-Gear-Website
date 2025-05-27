@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block title %}تسجيل منظمة جديدة - Champion Gear{% endblock %}
+
+{% block content %}
+<div style="margin-top: 6rem; margin-bottom: 4rem;">
+    <div class="page-container">
+        <div class="form-container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="font-size: 4rem; color: #ff6b35; margin-bottom: 1rem;">🏢</div>
+                <h1 style="color: #ff6b35; margin-bottom: 0.5rem;">تسجيل رابطة او نادي </h1>
+                <p style="color: #ccc;">أنشئ حساباً لرابطة او ناديك في نظامنا</p>
+            </div>
+
+            <form method="POST" action="{{ url_for('organization_signup_post') }}">
+                <div class="form-group">
+                    <label for="org_type">نوع المنظمة</label>
+                    <select id="org_type" name="org_type" required onchange="toggleFields()">
+                        <option value="">اختر نوع المنظمة</option>
+                        <option value="رابطة">رابطة</option>
+                        <option value="نادي">نادي</option>
+                    </select>
+                </div>
+                <div id="rabita-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="rabita_name">اسم الرابطة</label>
+                        <input type="text" id="rabita_name" name="rabita_name" placeholder="أدخل اسم الرابطة">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rabita_username">اسم المستخدم</label>
+                        <input type="text" id="rabita_username" name="rabita_username" placeholder="أدخل اسم المستخدم">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rabita_password">كلمة المرور</label>
+                        <input type="password" id="rabita_password" name="rabita_password" placeholder="أدخل كلمة المرور">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rabita_confirm_password">تأكيد كلمة المرور</label>
+                        <input type="password" id="rabita_confirm_password" name="rabita_confirm_password" placeholder="أعد إدخال كلمة المرور">
+                    </div>
+                </div>
+                <div id="nadi-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="nadi_name">اسم النادي</label>
+                        <input type="text" id="nadi_name" name="nadi_name" placeholder="أدخل اسم النادي">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="wilaya">الولاية</label>
+                        <select id="wilaya" name="wilaya">
+                            <option value="">اختر الولاية</option>
+                            <option value="01 - أدرار">01 - أدرار</option>
+                            <option value="02 - الشلف">02 - الشلف</option>
+                            <option value="03 - الأغواط">03 - الأغواط</option>
+                            <option value="04 - أم البواقي">04 - أم البواقي</option>
+                            <option value="05 - باتنة">05 - باتنة</option>
+                            <option value="06 - بجاية">06 - بجاية</option>
+                            <option value="07 - بسكرة">07 - بسكرة</option>
+                            <option value="08 - بشار">08 - بشار</option>
+                            <option value="09 - البليدة">09 - البليدة</option>
+                            <option value="10 - البويرة">10 - البويرة</option>
+                            <option value="11 - تمنراست">11 - تمنراست</option>
+                            <option value="12 - تبسة">12 - تبسة</option>
+                            <option value="13 - تلمسان">13 - تلمسان</option>
+                            <option value="14 - تيارت">14 - تيارت</option>
+                            <option value="15 - تيزي وزو">15 - تيزي وزو</option>
+                            <option value="16 - الجزائر">16 - الجزائر</option>
+                            <option value="17 - الجلفة">17 - الجلفة</option>
+                            <option value="18 - جيجل">18 - جيجل</option>
+                            <option value="19 - سطيف">19 - سطيف</option>
+                            <option value="20 - سعيدة">20 - سعيدة</option>
+                            <option value="21 - سكيكدة">21 - سكيكدة</option>
+                            <option value="22 - سيدي بلعباس">22 - سيدي بلعباس</option>
+                            <option value="23 - عنابة">23 - عنابة</option>
+                            <option value="24 - قالمة">24 - قالمة</option>
+                            <option value="25 - قسنطينة">25 - قسنطينة</option>
+                            <option value="26 - المدية">26 - المدية</option>
+                            <option value="27 - مستغانم">27 - مستغانم</option>
+                            <option value="28 - المسيلة">28 - المسيلة</option>
+                            <option value="29 - معسكر">29 - معسكر</option>
+                            <option value="30 - ورقلة">30 - ورقلة</option>
+                            <option value="31 - وهران">31 - وهران</option>
+                            <option value="32 - البيض">32 - البيض</option>
+                            <option value="33 - إليزي">33 - إليزي</option>
+                            <option value="34 - برج بوعريريج">34 - برج بوعريريج</option>
+                            <option value="35 - بومرداس">35 - بومرداس</option>
+                            <option value="36 - الطارف">36 - الطارف</option>
+                            <option value="37 - تندوف">37 - تندوف</option>
+                            <option value="38 - تسمسيلت">38 - تسمسيلت</option>
+                            <option value="39 - الوادي">39 - الوادي</option>
+                            <option value="40 - خنشلة">40 - خنشلة</option>
+                            <option value="41 - سوق أهراس">41 - سوق أهراس</option>
+                            <option value="42 - تيبازة">42 - تيبازة</option>
+                            <option value="43 - ميلة">43 - ميلة</option>
+                            <option value="44 - عين الدفلى">44 - عين الدفلى</option>
+                            <option value="45 - النعامة">45 - النعامة</option>
+                            <option value="46 - عين تموشنت">46 - عين تموشنت</option>
+                            <option value="47 - غرداية">47 - غرداية</option>
+                            <option value="48 - غليزان">48 - غليزان</option>
+                            <option value="49 - تيميمون">49 - تيميمون</option>
+                            <option value="50 - برج باجي مختار">50 - برج باجي مختار</option>
+                            <option value="51 - أولاد جلال">51 - أولاد جلال</option>
+                            <option value="52 - بني عباس">52 - بني عباس</option>
+                            <option value="53 - عين صالح">53 - عين صالح</option>
+                            <option value="54 - عين قزام">54 - عين قزام</option>
+                            <option value="55 - توقرت">55 - توقرت</option>
+                            <option value="56 - جانت">56 - جانت</option>
+                            <option value="57 - المقرأة">57 - المقرأة</option>
+                            <option value="58 - المنيعة">58 - المنيعة</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="president_name">اسم رئيس النادي</label>
+                        <input type="text" id="president_name" name="president_name" placeholder="أدخل اسم رئيس النادي">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="club_email">ايمايل النادي</label>
+                        <input type="email" id="club_email" name="club_email" placeholder="أدخل البريد الإلكتروني للنادي">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="president_phone">رقم رئيس النادي</label>
+                        <input type="tel" id="president_phone" name="president_phone" placeholder="05xxxxxxxx" pattern="[0-9]{10}" title="يرجى إدخال رقم هاتف جزائري صحيح (10 أرقام)">
+                        <small style="color: #ccc; font-size: 0.9rem; margin-top: 0.5rem; display: block;">
+                            مثال: 0555123456
+                        </small>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">إنشاء الحساب</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: #ccc; margin-bottom: 1rem;">لديك حساب بالفعل؟</p>
+                <a href="{{ url_for('organization_login') }}" class="btn btn-secondary">تسجيل الدخول</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleFields() {
+    const orgType = document.getElementById('org_type').value;
+    const rabitaFields = document.getElementById('rabita-fields');
+    const nadiFields = document.getElementById('nadi-fields');
+    rabitaFields.style.display = 'none';
+    nadiFields.style.display = 'none';
+    clearAllInputs();
+    if (orgType === 'رابطة') {
+        rabitaFields.style.display = 'block';
+        setRequiredFields('rabita');
+    } else if (orgType === 'نادي') {
+        nadiFields.style.display = 'block';
+        setRequiredFields('nadi');
+    }
+}
+
+function clearAllInputs() {
+    document.getElementById('rabita_name').value = '';
+    document.getElementById('rabita_username').value = '';
+    document.getElementById('rabita_password').value = '';
+    document.getElementById('rabita_confirm_password').value = '';
+    document.getElementById('nadi_name').value = '';
+    document.getElementById('wilaya').value = '';
+    document.getElementById('president_name').value = '';
+    document.getElementById('club_email').value = '';
+    document.getElementById('president_phone').value = '';
+    const allInputs = document.querySelectorAll('#rabita-fields input, #rabita-fields select, #nadi-fields input, #nadi-fields select');
+    allInputs.forEach(input => {
+        input.removeAttribute('required');
+    });
+}
+
+function setRequiredFields(type) {
+    if (type === 'rabita') {
+        document.getElementById('rabita_name').setAttribute('required', '');
+        document.getElementById('rabita_username').setAttribute('required', '');
+        document.getElementById('rabita_password').setAttribute('required', '');
+        document.getElementById('rabita_confirm_password').setAttribute('required', '');
+    } else if (type === 'nadi') {
+        document.getElementById('nadi_name').setAttribute('required', '');
+        document.getElementById('wilaya').setAttribute('required', '');
+        document.getElementById('president_name').setAttribute('required', '');
+        document.getElementById('club_email').setAttribute('required', '');
+        document.getElementById('president_phone').setAttribute('required', '');
+    }
+}
+document.querySelector('form').addEventListener('submit', function(e) {
+    const orgType = document.getElementById('org_type').value;
+    
+    if (orgType === 'رابطة') {
+        const password = document.getElementById('rabita_password').value;
+        const confirmPassword = document.getElementById('rabita_confirm_password').value;
+        
+        if (password !== confirmPassword) {
+            e.preventDefault();
+            alert('كلمة المرور غير متطابقة');
+            return;
+        }
+    } else if (orgType === 'نادي') {
+        const phone = document.getElementById('president_phone').value;
+        const phoneRegex = /^[0-9]{10}$/;
+        
+        if (!phoneRegex.test(phone)) {
+            e.preventDefault();
+            alert('يرجى إدخال رقم هاتف جزائري صحيح (10 أرقام)');
+            return;
+        }
+        
+        if (!phone.startsWith('05') && !phone.startsWith('06') && !phone.startsWith('07')) {
+            e.preventDefault();
+            alert('رقم الهاتف يجب أن يبدأ بـ 05 أو 06 أو 07');
+            return;
+        }
+    }
+});
+</script>
+
+{% endblock %}

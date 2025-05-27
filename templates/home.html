@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Karate Dojo - Train Your Skills{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>We are <span class="highlight"> Champion Gear</span></h1>
+        <p>Champion Gear is a startup that provides advanced equipment rentals for federations and leagues, as well as workshops for referees.</p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('shop') }}" class="btn btn-primary">See our Material</a>
+            <a href="{{ url_for('workshops') }}" class="btn btn-secondary">See our Workshops</a>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stats-container">
+        <div class="stat-item">
+            <span class="stat-number">160+</span>
+            <span class="stat-label">Arbitration devices</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">80+</span>
+            <span class="stat-label">Software & Accessories</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">60+</span>
+            <span class="stat-label">Referee Furniture</span>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="page-container">
+        <h2 class="section-title">Welcome to Champion Gear</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Material</h3>
+                <p id="pp">Availability of equipment rental for karate competitions</p>
+            </div>
+            <div class="card">
+                <h3>Workshops</h3>
+                <p id="pp"> Providing training courses for referees </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: rgba(255, 107, 53, 0.05);">
+    <div class="page-container">
+        <h2 class="section-title">Our Material</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Arbitration devices</h3>
+                <p>are the instruments used by referees and judges to signal decisions, maintain order, and ensure fair and accurate scoring during competitions.</p>
+            </div>
+            <div class="card">
+                <h3>Software & Accessories</h3>
+                <p>Software includes applications, systems, or programs used to analyze performance,Accessories are the supporting tools and devices that complement main equipment</p>
+            </div>
+            <div class="card">
+                <h3>Referee Furniture</h3>
+                <p>refers to the specialized furniture and fixtures designed to support referees and match officials before, during, and after a sporting event.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="{{ url_for('shop') }}" class="btn btn-primary">Visit Our Shop</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="page-container">
+        <h2 class="section-title">Workshops for referees</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Theoretical workshops</h3>
+                <p>Theoretical training workshop for referees in Kata refereeing.<br><br>
+                Theoretical training workshop for referees in Kata refereeing</p>
+            </div>
+            <div class="card">
+                <h3>Practical workshops</h3>
+                <p>Practical training workshop for referees in Kata refereeing <br><br>
+                Practical training workshop for referees in "Kimity" arbitration.</p>
+            </div>
+            <div class="card">
+                <h3>Specialized workshops</h3>
+                <p>Workshop on the Guide to Laws and Rules of Arbitration. <br><br>
+                    Remote training workshop for referees.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="{{ url_for('workshops') }}" class="btn btn-primary">View All Programs</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: linear-gradient(135deg, #ff6b35, #f7931e); text-align: center;">
+    <div class="page-container">
+        <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">? Ready to Begin Good Champion</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 2rem; color: white;">Join Our community and get your Material</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{{ url_for('workshops') }}" class="btn" style="background: white; color: #ff6b35; font-weight: bold;">Show Our Material</a>
+            <a href="{{ url_for('shop') }}" class="btn" style="background: transparent; color: white; border: 2px solid white;">Show our workshops</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

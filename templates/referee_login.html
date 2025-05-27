@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}تسجيل دخول الحكم - Champion Gear{% endblock %}
+
+{% block content %}
+<div style="margin-top: 6rem; margin-bottom: 4rem;">
+    <div class="page-container">
+        <div class="form-container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="font-size: 4rem; color: #ff6b35; margin-bottom: 1rem;">👨‍⚖️</div>
+                <h1 style="color: #ff6b35; margin-bottom: 0.5rem;">تسجيل دخول الحكم</h1>
+                <p style="color: #ccc;">مرحباً بك في نظام إدارة الحكام</p>
+            </div>
+
+            <form method="POST" action="{{ url_for('referee_login_post') }}">
+                <div class="form-group">
+                    <label for="username">اسم المستخدم</label>
+                    <input type="text" id="username" name="username" required placeholder="أدخل اسم المستخدم">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" name="password" required placeholder="أدخل كلمة المرور">
+                </div>
+
+                <div class="form-group">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="remember" name="remember" style="width: auto;">
+                        <label for="remember" style="margin: 0; color: #ccc;">تذكرني</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">تسجيل الدخول</button>
+            </form>
+
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: #ccc; margin-bottom: 1rem;">ليس لديك حساب؟</p>
+                <a href="{{ url_for('referee_signup') }}" class="btn btn-secondary">إنشاء حساب جديد</a>
+            </div>
+
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="#" style="color: #ff6b35; text-decoration: none; font-size: 0.9rem;">نسيت كلمة المرور؟</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

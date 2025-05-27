@@ -1,0 +1,475 @@
+{% extends "base.html" %}
+
+{% block title %}ورش التدريب - Karate Dojo{% endblock %}
+
+{% block content %}
+<div class="page-container">
+    <h1 class="page-title">ورش التدريب للحكام</h1>
+    
+    <div class="workshops-intro">
+        <p id="pp">نقدم مجموعة شاملة من ورش التدريب المصممة خصيصاً لتطوير مهارات الحكام في رياضة الكاراتيه</p>
+    </div>
+
+    <div class="workshops-grid">
+        <div class="workshop-category">
+            <h2 class="section-title">الورش النظرية</h2>
+            
+            <div class="workshop-card paid-workshop">
+                <div class="workshop-header">
+                    <h3>ورشة تدريب نظري للحكام في تحكيم "الكاتا"</h3>
+                    <span class="workshop-badge paid">مدفوع</span>
+                </div>
+                <div class="workshop-content">
+                    <p class="workshop-description">
+                        تعلم الأسس النظرية لتحكيم الكاتا، بما في ذلك معايير التقييم والقوانين الأساسية
+                    </p>
+                    <div class="workshop-details">
+                        <div class="detail-item">
+                            <span class="detail-label">المدة:</span>
+                            <span class="detail-value">3 ساعات</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدرب:</span>
+                            <span class="detail-value">خبير معتمد في الكاتا</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">التاريخ:</span>
+                            <span class="detail-value">15 يونيو 2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">السعر:</span>
+                            <span class="detail-value workshop-price">15,000 دج</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary workshop-btn" onclick="registerWorkshop('kata-theory', '15 يونيو 2025', 15000)">
+                        التسجيل
+                    </button>
+                </div>
+            </div>
+
+            <div class="workshop-card paid-workshop">
+                <div class="workshop-header">
+                    <h3>ورشة تدريب نظري للحكام في تحكيم "الكيميتي"</h3>
+                    <span class="workshop-badge paid">مدفوع</span>
+                </div>
+                <div class="workshop-content">
+                    <p class="workshop-description">
+                        فهم القواعد النظرية لتحكيم الكيميتي والتعرف على أساليب التسجيل والعقوبات
+                    </p>
+                    <div class="workshop-details">
+                        <div class="detail-item">
+                            <span class="detail-label">المدة:</span>
+                            <span class="detail-value">3 ساعات</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدرب:</span>
+                            <span class="detail-value">خبير معتمد في الكيميتي</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">التاريخ:</span>
+                            <span class="detail-value">22 يونيو 2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">السعر:</span>
+                            <span class="detail-value workshop-price">15,000 دج</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary workshop-btn" onclick="registerWorkshop('kumite-theory', '22 يونيو 2025', 15000)">
+                        التسجيل
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop-category">
+            <h2 class="section-title">الورش التطبيقية</h2>
+            
+            <div class="workshop-card paid-workshop">
+                <div class="workshop-header">
+                    <h3>ورشة تدريب تطبيقي للحكام في تحكيم "الكاتا"</h3>
+                    <span class="workshop-badge paid">مدفوع</span>
+                </div>
+                <div class="workshop-content">
+                    <p class="workshop-description">
+                        تطبيق عملي لقواعد تحكيم الكاتا مع محاكاة مسابقات حقيقية وتمارين عملية
+                    </p>
+                    <div class="workshop-details">
+                        <div class="detail-item">
+                            <span class="detail-label">المدة:</span>
+                            <span class="detail-value">4 ساعات</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدرب:</span>
+                            <span class="detail-value">حكم دولي معتمد</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">التاريخ:</span>
+                            <span class="detail-value">29 يونيو 2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">السعر:</span>
+                            <span class="detail-value workshop-price">20,000 دج</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary workshop-btn" onclick="registerWorkshop('kata-practical', '29 يونيو 2025', 20000)">
+                        التسجيل
+                    </button>
+                </div>
+            </div>
+
+            <div class="workshop-card paid-workshop">
+                <div class="workshop-header">
+                    <h3>ورشة تدريب تطبيقي للحكام في تحكيم "الكيميتي"</h3>
+                    <span class="workshop-badge paid">مدفوع</span>
+                </div>
+                <div class="workshop-content">
+                    <p class="workshop-description">
+                        تدريب عملي على تحكيم مباريات الكيميتي مع تطبيق القوانين في بيئة تنافسية حقيقية
+                    </p>
+                    <div class="workshop-details">
+                        <div class="detail-item">
+                            <span class="detail-label">المدة:</span>
+                            <span class="detail-value">4 ساعات</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدرب:</span>
+                            <span class="detail-value">حكم دولي معتمد</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">التاريخ:</span>
+                            <span class="detail-value">6 يوليو 2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">السعر:</span>
+                            <span class="detail-value workshop-price">20,000 دج</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary workshop-btn" onclick="registerWorkshop('kumite-practical', '6 يوليو 2025', 20000)">
+                        التسجيل
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop-category">
+            <h2 class="section-title">الورش المتخصصة</h2>
+            
+            <div class="workshop-card premium-workshop">
+                <div class="workshop-header">
+                    <h3>ورشة دليل القوانين والقواعد في التحكيم</h3>
+                    <span class="workshop-badge premium">متخصص</span>
+                </div>
+                <div class="workshop-content">
+                    <p class="workshop-description">
+                        دراسة معمقة لجميع القوانين والقواعد المعتمدة في التحكيم مع شهادة معتمدة
+                    </p>
+                    <div class="workshop-details">
+                        <div class="detail-item">
+                            <span class="detail-label">المدة:</span>
+                            <span class="detail-value">6 ساعات</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدرب:</span>
+                            <span class="detail-value">خبير قانوني معتمد</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">التاريخ:</span>
+                            <span class="detail-value">13 يوليو 2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">السعر:</span>
+                            <span class="detail-value workshop-price">45,000 دج</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary workshop-btn" onclick="registerWorkshop('rules-guide', '13 يوليو 2025', 45000)">
+                        التسجيل
+                    </button>
+                </div>
+            </div>
+
+            <div class="workshop-card premium-workshop">
+                <div class="workshop-header">
+                    <h3>ورشة التدريب عن بُعد للحكام</h3>
+                    <span class="workshop-badge premium">متخصص</span>
+                </div>
+                <div class="workshop-content">
+                    <p class="workshop-description">
+                        برنامج تدريبي شامل عن بُعد مع جلسات تفاعلية ومتابعة شخصية ومواد تعليمية متطورة
+                    </p>
+                    <div class="workshop-details">
+                        <div class="detail-item">
+                            <span class="detail-label">المدة:</span>
+                            <span class="detail-value">4 أسابيع</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">المدرب:</span>
+                            <span class="detail-value">فريق من المدربين المعتمدين</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">التاريخ:</span>
+                            <span class="detail-value">20 يوليو 2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">السعر:</span>
+                            <span class="detail-value workshop-price">90,000 دج</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary workshop-btn" onclick="registerWorkshop('remote-training', '20 يوليو 2025', 90000)">
+                        التسجيل
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="registrationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;">
+    <div class="form-container" style="max-width: 500px; margin: 2rem;">
+        <h2 id="modalTitle" style="color: #ff6b35; text-align: center; margin-bottom: 2rem;">تأكيد التسجيل في الورشة</h2>
+        <div id="modalMessage" style="text-align: center; margin-bottom: 2rem; color: #ccc; background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #ff6b35;">
+            <h3 id="workshopTitle" style="color: #ff6b35; margin-bottom: 1rem;"></h3>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                <span><strong>تاريخ الورشة:</strong></span>
+                <span id="workshopDate" style="color: #ff6b35;"></span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                <span><strong>السعر:</strong></span>
+                <span id="workshopPrice" style="color: #ff6b35; font-size: 1.2rem; font-weight: bold;"></span>
+            </div>
+            <p style="color: #28a745; font-weight: bold; margin-top: 1rem;">
+                هل تؤكد التسجيل في هذه الورشة؟
+            </p>
+        </div>
+        
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="participantName">الاسم الكامل:</label>
+                <input type="text" id="participantName" name="participantName" required>
+            </div>
+            <div class="form-group">
+                <label for="participantEmail">البريد الإلكتروني:</label>
+                <input type="email" id="participantEmail" name="participantEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="participantPhone">رقم الهاتف:</label>
+                <input type="tel" id="participantPhone" name="participantPhone" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-full" style="background: #28a745; border-color: #28a745;">
+                تأكيد التسجيل والحجز
+            </button>
+        </form>
+        
+        <div class="btnalign">
+            <button onclick="closeRegistrationModal()" class="btn btn-secondary" style="margin-top: 1rem;">
+                إلغاء
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.workshops-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: 10px;
+}
+
+.workshops-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.workshop-category {
+    margin-bottom: 2rem;
+}
+
+.workshop-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.workshop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 107, 53, 0.2);
+}
+
+.paid-workshop {
+    border-left: 4px solid #007bff;
+}
+
+.premium-workshop {
+    border-left: 4px solid #ff6b35;
+}
+
+.workshop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.workshop-header h3 {
+    color: #ff6b35;
+    margin: 0;
+    font-size: 1.4rem;
+    flex: 1;
+    min-width: 250px;
+}
+
+.workshop-badge {
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.workshop-badge.paid {
+    background: #007bff;
+    color: white;
+}
+
+.workshop-badge.premium {
+    background: #ff6b35;
+    color: white;
+}
+
+.workshop-description {
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.workshop-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.detail-label {
+    color: #ff6b35;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.detail-value {
+    color: white;
+    font-size: 0.95rem;
+}
+
+.workshop-price {
+    color: #ff6b35 !important;
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
+}
+
+.workshop-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .workshop-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .workshop-header h3 {
+        min-width: unset;
+        margin-bottom: 0.5rem;
+    }
+    
+    .workshop-details {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+let currentWorkshopData = {};
+
+function registerWorkshop(workshopType, date, price) {
+    {% if not session.get('user_id') %}
+        showLoginRequired();
+        return;
+    {% endif %}
+    
+    const workshops = {
+        'kata-theory': 'ورشة تدريب نظري للحكام في تحكيم الكاتا',
+        'kumite-theory': 'ورشة تدريب نظري للحكام في تحكيم الكيميتي',
+        'kata-practical': 'ورشة تدريب تطبيقي للحكام في تحكيم الكاتا',
+        'kumite-practical': 'ورشة تدريب تطبيقي للحكام في تحكيم الكيميتي',
+        'rules-guide': 'ورشة دليل القوانين والقواعد في التحكيم',
+        'remote-training': 'ورشة التدريب عن بُعد للحكام'
+    };
+    
+    currentWorkshopData = {
+        type: workshopType,
+        title: workshops[workshopType],
+        date: date,
+        price: price
+    };
+    
+    document.getElementById('workshopTitle').textContent = workshops[workshopType];
+    document.getElementById('workshopDate').textContent = date;
+    document.getElementById('workshopPrice').textContent = price.toLocaleString() + ' دج';
+    
+    document.getElementById('registrationModal').style.display = 'flex';
+    
+    document.getElementById('registrationForm').onsubmit = function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('participantName').value;
+        const email = document.getElementById('participantEmail').value;
+        const phone = document.getElementById('participantPhone').value;
+        
+        alert(`تم تأكيد التسجيل بنجاح!
+        
+الورشة: ${currentWorkshopData.title}
+التاريخ: ${currentWorkshopData.date}
+السعر: ${currentWorkshopData.price.toLocaleString()} دج
+
+سيتم التواصل معك قريباً لتأكيد الحجز وتفاصيل الدفع.
+شكراً لك ${name}!`);
+        
+        closeRegistrationModal();
+    };
+}
+
+function closeRegistrationModal() {
+    document.getElementById('registrationModal').style.display = 'none';
+    document.getElementById('registrationForm').reset();
+    currentWorkshopData = {};
+}
+
+document.getElementById('registrationModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeRegistrationModal();
+    }
+});
+function showLoginRequired() {
+    alert('يجب تسجيل الدخول أولاً للتسجيل في الورش');
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}تفاصيل المنتج{% endblock %}
+{% block content %}
+<div class="page-container">
+    <div class="card" style="max-width: 600px; margin: auto;">
+        <h3>{{ product[1] }}</h3>
+        <img src="{{ url_for('static', filename='images/products/' + product[5]) }}" alt="{{ product[1] }}" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+        <p><strong>الوصف:</strong> {{ product[2] }}</p>
+        <p><strong>السعر:</strong> ${{ product[3] }}</p>
+        <p><strong>الصنف:</strong> {{ product[4] }}</p>
+        <br>
+        <div class="btnalign">
+            <a href="{{ url_for('shop') }}" class="btn btn-secondary" style="margin-top: 1rem;">🔙 رجوع إلى المتجر</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
