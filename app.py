@@ -494,19 +494,18 @@ def add_sample_products():
     
     if count == 0:
         products = [
-            (1, 'تلفاز حجم كبير', 'Professional large screen display for VAR review - الكمية: 16', 1299.99, 'VAR Equipment', 'large-tv.png'),
-            (2, 'تلفاز حجم متوسط', 'Medium size display for referee stations - الكمية: 8', 899.99, 'VAR Equipment', 'medium-tv.png'),
-            (3, 'لوحات إلكترونية', 'Digital scoreboard systems for competitions - الكمية: 40', 699.99, 'VAR Equipment', 'scoreboard.png'),
-            (4, 'أجهزة تحكم احمر', 'Specialized red referee control units (غير متوفرة في السوق المحلي) - الكمية: 32', 299.99, 'VAR Equipment', 'red-control.png'),
-            (5, 'أجهزة تحكم ازرق', 'Specialized blue referee control units (غير متوفرة في السوق المحلي) - الكمية: 32', 299.99, 'VAR Equipment', 'blue-control.png'),
-            (6, 'كاميرات خاصة VAR', 'Professional VAR cameras for match recording (غير متوفرة في السوق المحلية) - الكمية: 32', 1899.99, 'VAR Equipment', 'var-camera.png'),
-            (7, 'برنامج', 'Professional VAR analysis software (غير متوفر في السوق المحلية) - Custom licensing', 4999.99, 'Software & Accessories', 'software.png'),
-            (8, 'حاسوب', 'High-performance computer for VAR operations - الكمية: 8', 1499.99, 'Software & Accessories', 'computer.png'),
-            (9, 'سماعات رأس', 'Communication headsets for referees - الكمية: 8', 199.99, 'Software & Accessories', 'headset.png'),
-            (10, 'أجهزة ربط بين العتاد (كابل)', 'Professional connection cables for VAR equipment - الكمية: 46', 49.99, 'Software & Accessories', 'cables.png'),
-            (11, 'أجهزة ربط مع الكهرباء', 'Electrical connection adapters for equipment - الكمية: 20', 79.99, 'Software & Accessories', 'power-adapter.png'),
-            (12, 'طاولة', 'Referee station tables - الكمية: 8', 299.99, 'Referee Furniture', 'table.png'),
-            (13, 'كراسي', 'Ergonomic chairs for referee stations - الكمية: 56', 149.99, 'Referee Furniture', 'chair.png')
+            (1, 'شاشة حجم كبير', 'Professional large screen display for VAR review - الكمية المتاحة: 16', 3000, 'أجهزة التحكيم', 'large-tv.png'),
+            (2, 'شاشة حجم متوسط', 'Medium size display for referee stations - الكمية المتاحة: 8', 3000, 'أجهزة التحكيم', 'medium-tv.png'),
+            (3, 'لوحات إلكترونية', 'Digital scoreboard systems for competitions - الكمية المتاحة: 40', 3000, 'أجهزة التحكيم', 'scoreboard.png'),
+            (4, 'أجهزة تحكم حمراء', 'Specialized red referee control units  - الكمية المتاحة: 32', 1500, 'أجهزة التحكيم', 'red-control.png'),
+            (5, 'أجهزة تحكم زرقاء', 'Specialized blue referee control units  - الكمية المتاحة: 32', 1500, 'أجهزة التحكيم', 'blue-control.png'),
+            (6, 'كاميرات خاصة VAR', 'Professional VAR cameras for match recording  - الكمية المتاحة: 32', 2000, 'أجهزة التحكيم', 'var-camera.png'),
+            (8, 'حاسوب و برنامج', 'High-performance computer for VAR operations - الكمية المتاحة: 8', 3000, 'الملحقات', 'computer.png'),
+            (9, 'سماعات', 'Communication headsets for referees - الكمية المتاحة: 8', 2000, 'الملحقات', 'headset.png'),
+            (10, 'أجهزة ربط بين العتاد (كابل)', 'Professional connection cables for VAR equipment - الكمية المتاحة: 46', 1000, 'الملحقات', 'cables.png'),
+            (11, 'أجهزة ربط بالكهرباء', 'Electrical connection adapters for equipment - الكمية المتاحة: 20', 1000, 'الملحقات', 'power-adapter.png'),
+            (12, 'طاولة', 'Referee station tables - الكمية المتاحة: 8', 2000, 'أثاث التحكم', 'table.png'),
+            (13, 'كراسي', 'Ergonomic chairs for referee stations - الكمية المتاحة: 56', 500, 'أثاث التحكم', 'chair.png')
         ]
         
         for product in products:

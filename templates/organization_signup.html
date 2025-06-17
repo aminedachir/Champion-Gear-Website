@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="org_type">نوع المنظمة</label>
                     <select id="org_type" name="org_type" required onchange="toggleFields()">
-                        <option value="">اختر نوع المنظمة</option>
+                        <option value=""></option>
                         <option value="رابطة">رابطة</option>
                         <option value="نادي">نادي</option>
                     </select>
@@ -27,6 +27,11 @@
                         <input type="text" id="rabita_name" name="rabita_name" placeholder="أدخل اسم الرابطة">
                     </div>
 
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required placeholder="أدخل البريد الإلكتروني">
+                    </div>
+                    
                     <div class="form-group">
                         <label for="rabita_username">اسم المستخدم</label>
                         <input type="text" id="rabita_username" name="rabita_username" placeholder="أدخل اسم المستخدم">

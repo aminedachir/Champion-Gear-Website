@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Karate Dojo{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{% block title %}Champion Gear{% endblock %}</title>
     <style>
         .logo-container {
             display: flex;
@@ -11,9 +11,35 @@
             gap: 10px;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.7));
+        }
+        .logo-container span {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.8rem;
+            background: linear-gradient(to right, #ff6b35, #ff8c53);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
         .logo-img {
-            height: 40px; 
+            height: 70px;
             width: auto;
+            transition: all 0.3s ease;
+            border-radius: 8px; /* Soft rounded corners */
+            padding: 5px;
+            background: rgba(255, 107, 53, 0.1); /* Subtle glow background */
         }
         * {
             margin: 0;
@@ -50,12 +76,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
-        }
-
-        .logo-container {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ff6b35;
         }
 
         .nav-links {
@@ -247,30 +267,6 @@
             margin-bottom: 1rem;
         }
 
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .karate-symbol {
-                font-size: 8rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
         .page-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -437,26 +433,191 @@
         .btnalign {
             text-align: center;
         }
+        .mobile-menu-toggle {
+            display: none; 
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
 
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+    @media (max-width: 768px) {
+        .nav-container {
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+        
+        .mobile-menu-toggle {
+            display: block;
+            order: 1;
+        }
+        
+        .logo-container {
+            order: 2;
+            flex-grow: 1;
+            justify-content: center;
+        }
+        .nav-links {
+            display: none; 
+            flex-direction: column;
+            width: 100%;
+            order: 4;
+            padding: 1rem 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.95);
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+        .nav-links.active {
+            display: flex;
+        }
+        .nav-buttons {
+            order: 3;
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+            display: none; 
+        }
+        .nav-buttons.active {
+            display: flex;
+        }
+        .dropdown-content {
+            position: static;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: none;
+            display: none;
+            width: 100%;
+        }
+        
+        .dropdown:hover .dropdown-content,
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+        .btn {
+            width: 100%;
+            text-align: center;
+        }
+        #cart-toggle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        .mobile-auth-dropdown {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .mobile-dropdown {
+            width: 100%;
+            position: relative;
+        }
+        
+        .mobile-dropdown-toggle {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-dropdown-toggle::after {
+            content: " ▼";
+            font-size: 0.8em;
+        }
+        
+        .mobile-dropdown-content {
+            position: static;
+            width: 100%;
+            display: none;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: none;
+            border-radius: 0 0 5px 5px;
+            margin-top: -5px;
+        }
+        
+        .mobile-dropdown.active .mobile-dropdown-content {
+            display: block;
+        }
+        
+        .mobile-dropdown-content a {
+            padding: 0.8rem 1rem;
+            text-align: center;
+        }
+        
+        .mobile-cart-btn {
+            width: 100%;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.7rem;
+            font-size: 1rem;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: white;
+            color: #ff6b35;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-container">
-                <span>Champion Gear</span>
-                <img src="{{ url_for('static', filename='images/logii.jpg') }}" alt="Logo" class="logo-img">
+                <span>Champion Gear</span>  
+                <img src="{{ url_for('static', filename='images/logii.png') }}" alt="Logo" class="logo-img">
             </div>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('shop') }}">Shop</a></li>
@@ -468,23 +629,22 @@
                     <span style="color: #ff6b35;">مرحبا، {{ session.get('username') }}</span>
                     <a href="{{ url_for('logout') }}" class="btn btn-secondary">تسجيل الخروج</a>
                 {% else %}
-                    <div class="dropdown">
-                        <a href="#" class="btn btn-secondary">تسجيل الدخول ▼</a>
-                        <div class="dropdown-content">
+                     <div class="mobile-auth-dropdown">
+                     <div class="dropdown mobile-dropdown">
+                        <a href="#" class="btn btn-secondary mobile-dropdown-toggle">تسجيل الدخول ▼</a>
+                        <div class="dropdown-content mobile-dropdown-content">
                             <a href="{{ url_for('referee_login') }}">حكم</a>
-                            <a href="{{ url_for('organization_login') }}">رابطة / نادي </a>
+                            <a href="{{ url_for('organization_login') }}">هيئة منظمة</a>
                         </div>
                     </div>
-                    <div class="dropdown">
-                        <a href="#" class="btn btn-primary">إنشاء حساب ▼</a>
-                        <div class="dropdown-content">
+                    <div class="dropdown mobile-dropdown">
+                        <a href="#" class="btn btn-primary mobile-dropdown-toggle">إنشاء حساب ▼</a>
+                        <div class="dropdown-content mobile-dropdown-content">
                             <a href="{{ url_for('referee_signup') }}">حكم</a>
-                            <a href="{{ url_for('organization_signup') }}">رابطة / نادي </a>
+                            <a href="{{ url_for('organization_signup') }}">هيئة منظمة</a>
                         </div>
                     </div>
-                    <button id="cart-toggle" onclick="toggleCartPreview()" style="background: #ff6b35; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative;">
-    🛒 <span id="cart-count" style="position: absolute; top: -5px; right: -5px; background: white; color: #ff6b35; border-radius: 50%; width: 20px; height: 20px; font-size: 0.8rem; display: none; align-items: center; justify-content: center;">0</span>
-</button>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -704,6 +864,40 @@ document.getElementById('loginModal').addEventListener('click', function(e) {
             cartPreview.style.display = 'none';
         }
     });
+    // Add this to your existing script section
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navButtons = document.querySelector('.nav-buttons');
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    mobileMenuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        navButtons.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                navButtons.classList.remove('active');
+            }
+        });
+    });
+    
+    // Mobile dropdown toggle
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                this.classList.toggle('active');
+            }
+        });
+    });
+});
     </script>
     <div id="cart-preview" style="display: none; position: fixed; top: 80px; right: 20px; width: 350px; background: rgba(0,0,0,0.95); border: 1px solid #ff6b35; border-radius: 8px; padding: 1rem; z-index: 1000; max-height: 70vh; overflow-y: auto;">
     <h3 style="color: #ff6b35; margin-bottom: 1rem;">Your Cart</h3>
