@@ -504,8 +504,8 @@ def add_sample_products():
             (9, 'سماعات', 'Communication headsets for referees - الكمية المتاحة: 8', 2000, 'الملحقات', 'headset.png'),
             (10, 'أجهزة ربط بين العتاد (كابل)', 'Professional connection cables for VAR equipment - الكمية المتاحة: 46', 1000, 'الملحقات', 'cables.png'),
             (11, 'أجهزة ربط بالكهرباء', 'Electrical connection adapters for equipment - الكمية المتاحة: 20', 1000, 'الملحقات', 'power-adapter.png'),
-            (12, 'طاولة', 'Referee station tables - الكمية المتاحة: 8', 2000, 'أثاث التحكم', 'table.png'),
-            (13, 'كراسي', 'Ergonomic chairs for referee stations - الكمية المتاحة: 56', 500, 'أثاث التحكم', 'chair.png')
+            (12, 'طاولات', 'Referee station tables - الكمية المتاحة: 8', 2000, 'أثاث التحيكم', 'table.png'),
+            (13, 'كراسي', 'Ergonomic chairs for referee stations - الكمية المتاحة: 56', 500, 'أثاث التحيكم', 'chair.png')
         ]
         
         for product in products:

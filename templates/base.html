@@ -634,7 +634,7 @@
                     <a href="{{ url_for('logout') }}" class="btn btn-secondary">تسجيل الخروج</a>
                 {% else %}
                     <details style="width: 100%; margin-bottom: 0.5rem;">
-                        <summary class="btn btn-secondary" style="cursor: pointer; text-align: center;">تسجيل الدخول ▼</summary>
+                        <summary class="btn btn-secondary" style="cursor: pointer; text-align: center;">تسجيل الدخول</summary>
                         <div style="display: flex; flex-direction: column; margin-top: 0.5rem;">
                             <a href="{{ url_for('referee_login') }}" class="btn btn-secondary" style="margin-top: 0.3rem;">حكم</a>
                             <a href="{{ url_for('organization_login') }}" class="btn btn-secondary" style="margin-top: 0.3rem;">هيئة منظمة</a>
@@ -642,7 +642,7 @@
                     </details>
 
                     <details style="width: 100%;">
-                        <summary class="btn btn-primary" style="cursor: pointer; text-align: center;">إنشاء حساب ▼</summary>
+                        <summary class="btn btn-primary" style="cursor: pointer; text-align: center;">إنشاء حساب </summary>
                         <div style="display: flex; flex-direction: column; margin-top: 0.5rem;">
                             <a href="{{ url_for('referee_signup') }}" class="btn btn-primary" style="margin-top: 0.3rem;">حكم</a>
                             <a href="{{ url_for('organization_signup') }}" class="btn btn-primary" style="margin-top: 0.3rem;">هيئة منظمة</a>
