@@ -17,7 +17,7 @@
                     <div class="item-details">
                         <h3>{{ item.name }}</h3>
                         <p>{{ item.description }}</p>
-                    <div class="item-price">{{ "%.2f"|format(item.price|float * 135) }} DZD</div>
+                    <div class="item-price">{{item.price}} DZD</div>
                     
                     <div class="rental-period">
                         <label for="rental-{{ item.id }}">Rental Period:</label>

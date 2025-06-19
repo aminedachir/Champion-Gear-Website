@@ -19,6 +19,7 @@
                         <option value=""></option>
                         <option value="رابطة">رابطة</option>
                         <option value="نادي">نادي</option>
+                        <option value="اتحادية">اتحادية</option>
                     </select>
                 </div>
                 <div id="rabita-fields" style="display: none;">
@@ -137,6 +138,46 @@
                     </div>
                 </div>
 
+                <div id="federation-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="federation_name">اسم الاتحادية</label>
+                        <input type="text" id="federation_name" name="federation_name" placeholder="أدخل اسم الاتحادية">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="federation_email">البريد الإلكتروني</label>
+                        <input type="email" id="federation_email" name="federation_email" placeholder="أدخل البريد الإلكتروني للاتحادية">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="federation_username">اسم المستخدم</label>
+                        <input type="text" id="federation_username" name="federation_username" placeholder="أدخل اسم المستخدم">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="federation_password">كلمة المرور</label>
+                        <input type="password" id="federation_password" name="federation_password" placeholder="أدخل كلمة المرور">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="federation_confirm_password">تأكيد كلمة المرور</label>
+                        <input type="password" id="federation_confirm_password" name="federation_confirm_password" placeholder="أعد إدخال كلمة المرور">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="president_name">اسم رئيس الاتحادية</label>
+                        <input type="text" id="federation_president_name" name="federation_president_name" placeholder="أدخل اسم رئيس الاتحادية">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="federation_phone">رقم رئيس الاتحادية</label>
+                        <input type="tel" id="federation_phone" name="federation_phone" placeholder="05xxxxxxxx" pattern="[0-9]{10}" title="يرجى إدخال رقم هاتف جزائري صحيح (10 أرقام)">
+                        <small style="color: #ccc; font-size: 0.9rem; margin-top: 0.5rem; display: block;">
+                            مثال: 0555123456
+                        </small>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary btn-full">إنشاء الحساب</button>
             </form>
 
@@ -153,31 +194,32 @@ function toggleFields() {
     const orgType = document.getElementById('org_type').value;
     const rabitaFields = document.getElementById('rabita-fields');
     const nadiFields = document.getElementById('nadi-fields');
+    const federationFields = document.getElementById('federation-fields');
     rabitaFields.style.display = 'none';
     nadiFields.style.display = 'none';
+    federationFields.style.display = 'none';
+
     clearAllInputs();
+
     if (orgType === 'رابطة') {
         rabitaFields.style.display = 'block';
         setRequiredFields('rabita');
     } else if (orgType === 'نادي') {
         nadiFields.style.display = 'block';
         setRequiredFields('nadi');
+    } else if (orgType === 'اتحادية') {
+        federationFields.style.display = 'block';
+        setRequiredFields('federation');
     }
 }
 
 function clearAllInputs() {
-    document.getElementById('rabita_name').value = '';
-    document.getElementById('rabita_username').value = '';
-    document.getElementById('rabita_password').value = '';
-    document.getElementById('rabita_confirm_password').value = '';
-    document.getElementById('nadi_name').value = '';
-    document.getElementById('wilaya').value = '';
-    document.getElementById('president_name').value = '';
-    document.getElementById('club_email').value = '';
-    document.getElementById('president_phone').value = '';
-    const allInputs = document.querySelectorAll('#rabita-fields input, #rabita-fields select, #nadi-fields input, #nadi-fields select');
+    const allInputs = document.querySelectorAll('input, select');
     allInputs.forEach(input => {
-        input.removeAttribute('required');
+        if (input.type !== 'submit' && input.type !== 'button') {
+            input.value = '';
+            input.removeAttribute('required');
+        }
     });
 }
 
@@ -193,6 +235,14 @@ function setRequiredFields(type) {
         document.getElementById('president_name').setAttribute('required', '');
         document.getElementById('club_email').setAttribute('required', '');
         document.getElementById('president_phone').setAttribute('required', '');
+    } else if (type === 'federation') {
+        document.getElementById('federation_name').setAttribute('required', '');
+        document.getElementById('federation_email').setAttribute('required', '');
+        document.getElementById('federation_username').setAttribute('required', '');
+        document.getElementById('federation_password').setAttribute('required', '');
+        document.getElementById('federation_confirm_password').setAttribute('required', '');
+        document.getElementById('federation_president_name').setAttribute('required', '');
+        document.getElementById('federation_phone').setAttribute('required', '');
     }
 }
 document.querySelector('form').addEventListener('submit', function(e) {
@@ -222,8 +272,53 @@ document.querySelector('form').addEventListener('submit', function(e) {
             alert('رقم الهاتف يجب أن يبدأ بـ 05 أو 06 أو 07');
             return;
         }
+    } else if (orgType === 'اتحادية') {
+        const password = document.getElementById('federation_password').value;
+        const confirmPassword = document.getElementById('federation_confirm_password').value;
+        const phone = document.getElementById('federation_phone').value;
+        const phoneRegex = /^[0-9]{10}$/;
+        
+        if (password !== confirmPassword) {
+            e.preventDefault();
+            alert('كلمة المرور غير متطابقة');
+            return;
+        }
+        
+        if (!phoneRegex.test(phone)) {
+            e.preventDefault();
+            alert('يرجى إدخال رقم هاتف جزائري صحيح (10 أرقام)');
+            return;
+        }
+        
+        if (!phone.startsWith('05') && !phone.startsWith('06') && !phone.startsWith('07')) {
+            e.preventDefault();
+            alert('رقم الهاتف يجب أن يبدأ بـ 05 أو 06 أو 07');
+            return;
+        }
     }
 });
 </script>
 
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

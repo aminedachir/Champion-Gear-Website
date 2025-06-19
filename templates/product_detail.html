@@ -6,7 +6,7 @@
         <h3>{{ product[1] }}</h3>
         <img src="{{ url_for('static', filename='images/products/' + product[5]) }}" alt="{{ product[1] }}" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
         <p><strong>الوصف:</strong> {{ product[2] }}</p>
-        <p><strong>السعر:</strong> ${{ product[3] }}</p>
+        <p><strong>السعر:</strong> {{ product[3] }} دج </p>
         <p><strong>الصنف:</strong> {{ product[4] }}</p>
         <br>
         <div class="btnalign">
